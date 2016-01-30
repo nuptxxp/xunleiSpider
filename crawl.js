@@ -45,7 +45,7 @@ exports.getVipTextList = function (url, callback) {
 };
 
 exports.getVipAccountList = function (vipTextList, callback) {
-    var resList = [];
+    var res = {};
     for (var i = 0, len = vipTextList.length; i < len; ++i) {
         var tmpVipList = vipTextList[i].split();
         for (var j = 0, jlen = tmpVipList.length; j < jlen; ++j) {
@@ -53,13 +53,15 @@ exports.getVipAccountList = function (vipTextList, callback) {
             var vipAccount = null;
             var vipPasswd = null;
             var vipAccountRes = tmpVip.match(/[0-9a-z]+:[0-9a-z]/);
-            if(vipAccountRes) vipAccount = vipAccountRes[0];
+            if (vipAccountRes) vipAccount = vipAccountRes[0];
             var vipPasswdRes = tmpVip.match(/[0-9a-z]+$/);
-            if(vipPasswdRes) vipPasswd = vipPasswdRes[0];
-            if(vipAccount && vipPasswd) resList.push([vipAccount, vipPasswd]);
+            if (vipPasswdRes) vipPasswd = vipPasswdRes[0];
+            if (vipAccount && vipPasswd) {
+                res[vipAccount] = vipPasswd;
+            }
         }
     }
-    callback(null, resList);
+    callback(null, res);
 };
 
 module.exports = exports;
