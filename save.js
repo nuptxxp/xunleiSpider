@@ -32,7 +32,7 @@ exports.saveVipAccountList = function (vipAccount, callback) {
                     return callback(err);
                 }
                 debug('save success');
-                client.PEXPIRE(key, 86400 * 5, function () {
+                client.EXPIRE(key, 86400 * 5, function () {
                     pool.release(client);
                 });
                 callback(null);
