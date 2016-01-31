@@ -30,7 +30,7 @@ async.series([
         });
     },
     function (done) {
-        save.saveVipAccountList(xunleiCountList, config.storgeFile, function (err) {
+        save.saveVipAccountList(xunleiCountList, function (err) {
             done(err);
         });
     }

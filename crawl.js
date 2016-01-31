@@ -47,7 +47,7 @@ exports.getVipTextList = function (url, callback) {
 exports.getVipAccountList = function (vipTextList, callback) {
     var res = {};
     for (var i = 0, len = vipTextList.length; i < len; ++i) {
-        var tmpVipList = vipTextList[i].split();
+        var tmpVipList = vipTextList[i].split('\r\n');
         for (var j = 0, jlen = tmpVipList.length; j < jlen; ++j) {
             var tmpVip = tmpVipList[j].trim();
             var vipAccount = null;

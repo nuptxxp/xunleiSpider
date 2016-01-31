@@ -20,7 +20,7 @@ var pool = poolModule.Pool({
     log : false
 });
 
-exports.saveVipAccountList = function (vipAccount, filename, callback) {
+exports.saveVipAccountList = function (vipAccount, callback) {
     pool.acquire(function (err, client) {
         if (err) {
             return callback(err);
